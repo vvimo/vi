@@ -1,0 +1,79 @@
+/**
+ * px2remFun: px 转换 rem
+ * @author vimo
+ * @date 2017-12-25
+ */
+px2remFun(px)
+  (px / baseFontSize * 1)rem
+  
+/**
+ * marginFun: 外盒子
+ * @author vimo
+ * @date 2017-12-25
+ */
+ marginFun(boxList, type = true, name=)
+    if type
+        for item in boxList
+            .m-{item[0]}
+                margin unit(item[1], px)
+    else
+        for item in boxList
+            .m-{name}-{item[0]}
+                margin-top unit(item[1], px) if t in name
+                margin-bottom unit(item[1], px) if b in name
+                margin-left unit(item[1], px) if l in name
+                margin-right unit(item[1], px) if r in name
+
+ /**
+ * paddingFun: 内盒子
+ * @author vimo
+ * @date 2017-12-25
+ * sub=0
+ */
+ paddingFun(boxList, type = true, name=)
+    if type
+        for item in boxList
+            .p-{item[0]}
+                padding unit(item[1], px)
+    else
+        for item in boxList
+            .p-{name}-{item[0]}
+                padding-top unit(item[1], px) if t in name
+                padding-bottom unit(item[1], px) if b in name
+                padding-left unit(item[1], px) if l in name
+                padding-right unit(item[1], px) if r in name
+
+/**
+ * 箭头Fn: 默认左剪头
+ * @author vimo
+ * @date 2017-12-25
+ * sub 10px 10px 10px 0
+ * color #fff
+ */
+triangleFun(sub=11px 10px 10px 0, color=#fff)
+    border-width sub
+    border-color transparent color
+    border-style solid
+    width 0
+
+/**
+ * marginFun: 层级
+ * @author vimo
+ * @date 2017-12-25
+ */
+ zIndexFun(list = 10)
+    for item, i in list
+        .z-index-{i+1}
+            z-index item
+
+/*
+ * 颜色种类和 hover
+ */
+tagColorFun(nameList = tag_data_name, bgColorList = tag_data_bgColor, colorList = tag_data_color)
+    for num, i in bgColorList
+        .c-{nameList[i]}
+            background num
+            color colorList[i]
+        .c-{nameList[i]}:hover
+                background lighten(num, 20%)
+            

@@ -1,0 +1,55 @@
+.c-search
+    &-wrapper
+        @extend .rel
+
+    &-input
+        width 100%
+        min-height search_height
+        line-height search_lineHeight
+        font-size search_fontSize
+        border search_border
+        border-radius search_border_radius
+        overflow hidden
+        & input
+            padding 0 30px
+            width 100%
+            height inherit
+            line-height inherit
+            font-size inherit
+            border none
+            outline none
+        & i
+            @extend .abs
+            top 0
+            width 30px
+            text-align center
+            font-weight bold
+        & .icon-search
+            left 0
+        & .icon-close
+            right 0
+
+    &-dropdown
+        @extend .abs
+        top search_height
+        left 0
+        right 0
+        min-height search_dropdown_minHeight
+        height search_dropdown_height
+        max-height search_dropdown_maxHeight
+        margin-top 15px
+        padding search_dropdown_padding
+        background search_dropdown_bg
+        border search_dropdown_border
+        border-radius search_dropdown_border_radius
+        z-index 9
+        &:after, &:before
+            content ''
+            @extend .abs
+            left 7px
+        &:after
+            top -6px
+            triangleFun(0 8px 7px 8px, transparent search_dropdown_bg)
+        &:before
+            top -7px
+            triangleFun(0 8px 7px 8px, transparent search_dropdown_border_color)

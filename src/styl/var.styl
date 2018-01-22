@@ -1,0 +1,104 @@
+@charset "UTF-8"
+/**
+ * var.styl 项目样式变量
+ * @author vimo
+ * @date 2018-01-11
+ *
+ * --- function ----
+ *
+ * --- common ----
+ * #common 通用
+ *
+ * --- component ----
+ */
+
+/* lighten(color, 10%); 返回的颜色在'color'基础上变亮10% */
+/* darken(color, 10%); 返回的颜色在'color'基础上变暗10% */
+/* saturate(color, 10%); 返回的颜色在'color'基础上饱和度增加10% */
+/* desaturate(color, 10%); 返回的颜色在'color'基础上饱和度降低10% */
+
+/* #common 通用 */
+// font 文字
+font_family = "微软雅黑", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif
+font_size = 14px
+font_lineHeight = 1.5em
+font_areaHeight = 2em
+font_h1 = 28px
+font_h2 = 24px
+font_h3 = 18px
+font_h4 = 16px
+font_h5 = 14px
+font_h6 = 12px
+font_size_min = 12px
+
+// color 颜色
+color_primary = #2d8cf0             // 主色调
+color_lightPrimary = #5cadff        // hover
+color_darkPrimary = #2b85e4         // active
+
+color_info = #2d8cf0                // 副色调
+color_success = #19be6b             // 成功
+color_warning = #ff9900             // 警告
+color_error = #ed3f14               // 失败
+
+color_title = #1c2438               // 标题
+color_content = #495060             // 正文
+color_subColor = #80848f            // 辅助/图标
+color_disabled = #bbbec4            // 失效
+color_border = #dddee1              // 边框
+color_divider = #e9eaec             // 分割线
+color_background = #f8f8f9          // 背景
+
+// common 实例
+common_none = none
+common_fontFamily = font_family
+common_fontSize = font_size
+common_fontLineHeight = font_lineHeight
+common_color = #333
+common_body_background = color_background
+common_box_list = (none 0) (xs 5) (sm 10) (md 15) (dl 20) (lg 30)
+
+/* #layout 组件 */
+layout_head_bg = linear-gradient(to right, #005293, #4395cf)
+layout_aside_bg = #00355e
+
+/* #component 组件 */
+// #input
+input_height = 30px
+input_lineHeight = input_height
+input_fontSize = 12px
+input_border = 1px solid #e3e3e3
+input_border_radius = 4px
+
+// #search
+search_height = input_height
+search_lineHeight = search_height
+search_fontSize = input_fontSize
+search_border = input_border
+search_border_radius = input_border_radius
+
+// #search-dropdown
+search_dropdown_bg = #fff
+search_dropdown_border_color = #eee
+search_dropdown_border =  1px solid search_dropdown_border_color
+search_dropdown_border_radius = search_border_radius
+search_dropdown_padding = 0
+search_dropdown_minHeight = inherit
+search_dropdown_height = inherit
+search_dropdown_maxHeight = inherit
+
+// #tag
+tag_margin = 2px 4px 2px 0
+tag_padding = 0 8px
+tag_height = 22
+tag_lineHeight = tag_height
+tag_fontSize = 12
+tag_color = #fff
+tag_bg = #f7f7f7
+tag_data_name = tag-default tag-blue tag-green tag-red tag-yellow
+tag_data_bgColor = #f7f7f7 #2d8cf0 #19be6b #ed3f14 #f90
+tag_data_color = #333 #fff #fff #fff #fff
+
+/* mobile */
+// 基于视觉稿横屏尺寸/100得出的基准font-size
+baseFontSize = 108
