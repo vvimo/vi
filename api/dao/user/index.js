@@ -10,7 +10,7 @@ module.exports = {
     // 建立连接，向表中插入值
     // 'INSERT INTO user(userName, password) VALUES(?,?)'
     $pool.getConnection(function (err, connection) {
-      connection.query($sql.insert, function (err, result) {
+      connection.query($sql.insert, param,function (err, result) {
         if (result) {
           result = { code: 200, msg: '新增成功' }
         }
@@ -58,12 +58,19 @@ module.exports = {
     })
   },
   queryById: function (req, res, next) {
-    let id = +req.query.id; 
+    let id = req.query.id
 
     // 为了拼凑正确的sql语句，这里要转下整数
-    pool.getConnection(function(err, connection) {
+    $pool.getConnection(function(err, connection) {
       connection.query($sql.queryById, id, function(err, result) {
-        jsonWrite(res, result)
+        if (result) {
+          result = {
+            code: 200,
+            msg: '查询成功',
+            data: result
+          }
+        }
+        $jsonWrite(res, result)
         connection.release()
       })
     })
@@ -79,6 +86,22 @@ module.exports = {
           }
         }
 
+        $jsonWrite(res, result)
+        connection.release()
+      })
+    })
+  },
+  cardAdd: function (req, res, next) {
+    let param = req.query || req.params
+
+    $pool.getConnection(function (err, connection) {
+      connection.query($sql.cardAdd, [param.number, param.name],function (err, result) {
+        if (result) {
+          result = {
+            code: 200,
+            msg: '添加成功'
+          }
+        }
         $jsonWrite(res, result)
         connection.release()
       })

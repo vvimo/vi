@@ -79,26 +79,12 @@ body
     line-height 0
     overflow hidde
 
-// margin
-marginFun(common_box_list)
-marginFun(common_box_list, false, t)
-marginFun(common_box_list, false, b)
-marginFun(common_box_list, false, l)
-marginFun(common_box_list, false, r)
-
-// padding
-paddingFun(common_box_list)
-paddingFun(common_box_list, false, t)
-paddingFun(common_box_list, false, b)
-paddingFun(common_box_list, false, l)
-paddingFun(common_box_list, false, r)
-
 /* 基础设置 */
 *:hover
     @extend .transition
 
 .container
-    max-width 1012px
+    max-width 1024px
     margin 0 auto
 
 .a
@@ -126,3 +112,84 @@ paddingFun(common_box_list, false, r)
     &-nav
     &-msg
         line-height 36px
+
+/* flex */
+.flex
+    display flex
+    &-row
+        flex-direction row // 默认
+    &-row-r
+        flex-direction row-reverse
+    &-column
+        flex-direction column
+    &-column-r
+        flex-direction column-reverse
+    
+    &-nowrap
+        flex-wrap nowrap // 不换行
+    &-wrap
+        flex-wrap wrap // 默认
+    &-wrap-r
+        flex-wrap wrap-reverse
+        
+    &-justify
+        justify-content flex-start // 默认
+    &-justify-r
+        justify-content flex-end // 右对齐
+    &-justify-c
+        justify-content center // 中间
+    &-justify-sb
+        justify-content space-between // 两端对齐
+    &-justify-sa
+        justify-content space-around // 每个项目两侧的间隔相等
+        
+    &-items
+        align-items stretch // 默认 上下对齐
+    &-items-up
+        align-items flex-start // 上对齐
+    &-items-down
+        align-items flex-end // 下对齐
+    &-items-c
+        align-items center // 中间对齐
+    &-items-b
+        align-items baseline // 第一行文字对齐
+        
+    &-align
+        align-content stretch
+    &-align-up
+        align-content flex-start
+    &-align-down
+        align-content flex-end
+    &-align-c
+        align-content center
+    &-align-sb
+        align-content space-between
+    &-align-sa
+        align-content space-around
+        
+    &-item-self
+        align-self auto
+    &-item-self-up
+        align-self flex-start
+    &-item-self-down
+        align-self flex-end
+    &-item-self-c
+        align-self center
+    &-item-self-b
+        align-self baseline
+    &-item-self-s
+        align-self stretch
+
+// margin
+marginFun(common_box_list)
+marginFun(common_box_list, false, t)
+marginFun(common_box_list, false, b)
+marginFun(common_box_list, false, l)
+marginFun(common_box_list, false, r)
+
+// padding
+paddingFun(common_box_list)
+paddingFun(common_box_list, false, t)
+paddingFun(common_box_list, false, b)
+paddingFun(common_box_list, false, l)
+paddingFun(common_box_list, false, r)

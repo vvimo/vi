@@ -1,40 +1,37 @@
-import qiniu from 'qiniu'
+var qiniu = require('qiniu')
 
 // 需要填写你的 Access Key 和 Secret Key
-qiniu.conf.ACCESS_KEY = 'kZY2r49FJ0dGC3r0XgIHkLfsj1f6jIu39a2sLjW9'
-qiniu.conf.SECRET_KEY = '6bzMHq188W_78iCmNmD-EOS67lN_R-ttdQAN24M8'
+var accessKey = 'kZY2r49FJ0dGC3r0XgIHkLfsj1f6jIu39a2sLjW9'
+var secretKey = '6bzMHq188W_78iCmNmD-EOS67lN_R-ttdQAN24M8'
 
 // 要上传的空间
 const bucket = 'vvimo'
-
-// 上传到七牛后保存的文件名
-key = 'my-nodejs-logo.png'
-
-// 构建上传策略函数
-function uptoken(bucket, key) {
-  var putPolicy = new qiniu.rs.PutPolicy(bucket+":"+key)
-  return putPolicy.token()
+var options = {
+  scope: bucket,
 }
 
-// 生成上传 Token
-token = uptoken(bucket, key)
+var mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
+var putPolicy = new qiniu.rs.PutPolicy(options)
+var uploadToken = putPolicy.uploadToken(mac)
 
-// 要上传文件的本地路径
-filePath = './ruby-logo.png'
+var config = new qiniu.conf.Config()
+// 空间对应的机房
+config.zone = qiniu.zone.Zone_z0
 
-// 构造上传函数
-function uploadFile(uptoken, key, localFile) {
-  var extra = new qiniu.io.PutExtra()
-    qiniu.io.putFile(uptoken, key, localFile, extra, function(err, ret) {
-      if(!err) {
-        // 上传成功， 处理返回值
-        console.log(ret.hash, ret.key, ret.persistentId)
-      } else {
-        // 上传失败， 处理返回代码
-        console.log(err)
-      }
-  })
-}
 
-// 调用uploadFile上传
-uploadFile(key, filePath)
+var formUploader = new qiniu.form_up.FormUploader(config)
+var putExtra = new qiniu.form_up.PutExtra()
+
+var localFile = "./1.png"
+var key='text.png'
+
+// 文件上传
+formUploader.putFile(uploadToken, key, localFile, putExtra, function(respErr, respBody, respInfo) {
+  if (respErr) throw respErr
+  if (respInfo.statusCode == 200) {
+    console.log(respBody)
+  } else {
+    console.log(respInfo.statusCode)
+    console.log(respBody)
+  }
+})

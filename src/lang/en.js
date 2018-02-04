@@ -1,9 +1,20 @@
 export default {
+  login: {
+    loading: 'Loading',
+    logIn: 'Sign In'
+  },
   routes: {
-    home: 'home',
-    html: 'Html',
-    css: 'Css',
-    javascript: 'JavscScript',
-    case: 'case'
+    home: 'Home',
+    gallery: 'Gallery',
+    article: 'Article',
+    work: 'Work',
+    about: 'About'
+  },
+  classfily: {
+    all: 'all',
+    plane: 'Plane',
+    ui: 'ui',
+    webpage: 'Webpage',
+    illustration: 'Illustration'
   }
 }

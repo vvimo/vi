@@ -2,12 +2,12 @@
   <div class="l-header">
     <div class="container">
       <div>
-        <a class="a" href="">
+        <a href="">
           logo
         </a>
         <ul class="f-r">
           <li class="f-l" v-for="(item, index) in list" :key="index">
-            <a class="a" style="margin-left: 30px" :href="item.serf">{{ $t(item.name) }}</a>
+            <router-link class="m-l-dl" :to="item.serf">{{ $t(item.name) }}</router-link>
           </li>
         </ul>
       </div>
@@ -27,20 +27,20 @@ export default {
           serf: '/'
         },
         {
-          name: 'routes.html',
-          serf: '/html'
+          name: 'routes.gallery',
+          serf: '/gallery'
         },
         {
-          name: 'routes.javascript',
-          serf: '/js'
+          name: 'routes.article',
+          serf: '/article'
         },
         {
-          name: 'routes.css',
-          serf: '/css'
+          name: 'routes.work',
+          serf: '/work'
         },
         {
-          name: 'routes.case',
-          serf: '/case'
+          name: 'routes.about',
+          serf: '/about'
         }
       ]
     }

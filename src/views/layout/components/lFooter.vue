@@ -7,7 +7,7 @@
       <div class="l-footer-msg">
         <span v-for="(item, index) in msg" :key="index">
             <span v-if='item.serf == ""'>{{ item.name }}</span>
-            <a class="a a-l-f m-r-md" :href="item.serf" v-if='item.serf != ""'>{{ item.name }}</a>
+            <a class="a a-l-f m-l-sm" :href="item.serf" v-if='item.serf != ""'>{{ item.name }}</a>
         </span>
       </div>
       <div></div>
@@ -44,11 +44,14 @@ export default {
       ],
       msg: [
         {
-          name: 'Copyright ©',
+          name: '©',
           serf: ''
         }, {
-          name: '微墨网',
-          serf: 'http://www.vvimo.com'
+          name: '',
+          serf: ''
+        }, {
+          name: 'vvimo',
+          serf: ''
         }, {
           name: '沪ICP备15022950号-1',
           serf: 'http://www.miitbeian.gov.cn/'
@@ -56,7 +59,11 @@ export default {
       ]
     }
   },
-  computed: {}
+  computed: {},
+  mounted () {
+    let year = new Date()
+    this.msg[1].name = year.getFullYear() + ''
+  }
 }
 </script>
 

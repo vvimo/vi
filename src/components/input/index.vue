@@ -2,7 +2,8 @@
   <div class="c-input-wrapper">
     <template v-if="type !== 'textarea'">
       <div v-if="prepend"><slot name="prepend"></slot></div>
-      <input type="text"
+      <input
+      :type="type"
       :value="currentValue"
       :class="inputClasses"
       @focus="handleFocus"

@@ -5,7 +5,17 @@ function pluralize (time, label) {
   return time + label + 's'
 }
 
+function timeStamp (time) {
+  if (typeof time === 'object') {
+    time = Date.parse(time) / 1000
+  } else {
+    time = Date.parse(new Date(time)) / 1000
+  }
+  return time
+}
+
 export function timeAgo (time) {
+  time = timeStamp(time)
   const between = Date.now() / 1000 - Number(time)
   if (between < 3600) {
     return pluralize(~~(between / 60), ' minute')
@@ -20,6 +30,8 @@ export function parseTime (time, cFormat) {
   if (arguments.length === 0) {
     return null
   }
+
+  time = timeStamp(time)
 
   if ((time + '').length === 10) {
     time = +time * 1000
@@ -53,6 +65,7 @@ export function parseTime (time, cFormat) {
 }
 
 export function formatTime (time, option) {
+  time = timeStamp(time)
   time = +time * 1000
   const d = new Date(time)
   const now = Date.now()
@@ -71,7 +84,7 @@ export function formatTime (time, option) {
   if (option) {
     return parseTime(time, option)
   } else {
-    return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分'
+    return d.getMonth() + 1 + '月' + d.getDate() + '日 ' + d.getHours() + '时 ' + d.getMinutes() + '分'
   }
 }
 
@@ -101,4 +114,27 @@ export function html2Text (val) {
 
 export function toThousandslsFilter (num) {
   return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
+}
+
+// 根据身份证号码获取性别
+export function getIdCardSex (UUserCard) {
+  if (UUserCard === '') return
+  return parseInt(UUserCard.substr(16, 1)) % 2 === 1 ? '男' : '女'
+}
+
+// 根据身份证号码获取出生日期
+export function getIdCardBirth (UUserCard) {
+  if (UUserCard === '') return
+  return UUserCard.substring(6, 10) + '-' + UUserCard.substring(10, 12) + '-' + UUserCard.substring(12, 14)
+}
+
+// 根据身份证号码获取年龄
+export function getIdCardAge (UUserCard) {
+  if (UUserCard === '') return
+  let myDate = new Date()
+  let month = myDate.getMonth() + 1
+  let day = myDate.getDate()
+  let age = myDate.getFullYear() - UUserCard.substring(6, 10) - 1
+  if ((UUserCard.substring(10, 12) < month || UUserCard.substring(10, 12) === month) && UUserCard.substring(12, 14) <= day) age++
+  return age
 }

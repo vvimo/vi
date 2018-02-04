@@ -46,9 +46,31 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     before (app) {
-      app.get('/api/queryAll', function (req, res, next) {
-        ApiDao.userDao.queryAll(req, res, next)
-      })
+      /* login */
+      app.post('/api/login/add', function (req, res, next) { ApiDao.loginDao.add(req, res, next) })
+      app.post('/api/login/update', function (req, res, next) { ApiDao.loginDao.update(req, res, next) })
+      app.post('/api/login/delete', function (req, res, next) { ApiDao.loginDao.delete(req, res, next) })
+      app.post('/api/login/login', function (req, res, next) { ApiDao.loginDao.queryByUserName(req, res, next) })
+
+      /* user */
+      app.post('/api/user/add', function (req, res, next) { ApiDao.userDao.add(req, res, next) })
+      app.post('/api/user/update', function (req, res, next) { ApiDao.userDao.update(req, res, next) })
+      app.post('/api/user/delete', function (req, res, next) { ApiDao.userDao.delete(req, res, next) })
+      app.post('/api/user/queryById', function (req, res, next) { ApiDao.userDao.queryById(req, res, next) })
+      app.post('/api/user/queryAll', function (req, res, next) { ApiDao.userDao.queryAll(req, res, next) })
+      
+      /* article */
+      app.post('/api/article/add', function (req, res, next) { ApiDao.articleDao.add(req, res, next) })
+      app.post('/api/article/update', function (req, res, next) { ApiDao.articleDao.update(req, res, next) })
+      app.post('/api/article/updateRead', function (req, res, next) { ApiDao.articleDao.updateRead(req, res, next) })
+      app.post('/api/article/updateState', function (req, res, next) { ApiDao.articleDao.updateState(req, res, next) })
+      app.post('/api/article/delete', function (req, res, next) { ApiDao.articleDao.delete(req, res, next) })
+      app.post('/api/article/queryById', function (req, res, next) { ApiDao.articleDao.queryById(req, res, next) })
+      app.post('/api/article/queryAll', function (req, res, next) { ApiDao.articleDao.queryAll(req, res, next) })
+
+      /* card */
+      app.post('/api/card/add', function (req, res, next) { ApiDao.cardDao.add(req, res, next) })
+      app.post('/api/card/info', function (req, res, next) { ApiDao.cardDao.queryByCard(req, res, next) })
     }
   },
   plugins: [
