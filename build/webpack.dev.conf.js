@@ -13,7 +13,7 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
-const ApiDao = require('../api/dao')
+const ApiDao = require('../api/dao/index.js')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
