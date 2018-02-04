@@ -67,10 +67,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       app.post('/api/article/delete', function (req, res, next) { ApiDao.articleDao.delete(req, res, next) })
       app.post('/api/article/queryById', function (req, res, next) { ApiDao.articleDao.queryById(req, res, next) })
       app.post('/api/article/queryAll', function (req, res, next) { ApiDao.articleDao.queryAll(req, res, next) })
-
-      /* card */
-      app.post('/api/card/add', function (req, res, next) { ApiDao.cardDao.add(req, res, next) })
-      app.post('/api/card/info', function (req, res, next) { ApiDao.cardDao.queryByCard(req, res, next) })
     }
   },
   plugins: [
