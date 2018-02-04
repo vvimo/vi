@@ -1,0 +1,40 @@
+.l-header
+.l-main
+.l-footer
+    position relative
+
+/* console */
+.cl-wrapper
+    @extend .flex
+    @extend .flex-row
+    height 100%
+    overflow hidden
+.cl-sidebar
+.cl-content
+    @extend .flex
+    @extend .flex-column
+    overflow hidden
+.cl-sidebar
+    flex 0 1 200px
+    border-right 1px solid #e3e3e3
+    &&-collapse
+        flex 0 1 64px
+.cl-menu
+.cl-main
+    flex 1
+    overflow hidden
+.cl-content
+    flex auto
+.cl-collapse
+    text-align center
+    font-size 18px
+    border-top 1px solid #e3e3e3
+    & .el-button--text
+        padding 5px 0
+        color #333
+
+/* login */
+.login-warpper
+    @extend .flex
+    @extend .flex-justify-c
+    @extend .flex-items-c
