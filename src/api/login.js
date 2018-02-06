@@ -7,7 +7,7 @@ export function loginByUsername (userName, password) {
     password: cryptPwd(password)
   }
   return request({
-    url: '/api/login/login',
+    url: '/login/login',
     method: 'post',
     params: data
   })
@@ -19,7 +19,7 @@ export function join (userName, password) {
     password: cryptPwd(password)
   }
   return request({
-    url: '/api/login/add',
+    url: '/login/add',
     method: 'post',
     params: data
   })
@@ -27,14 +27,14 @@ export function join (userName, password) {
 
 export function logout () {
   return request({
-    url: '/api/login/logout',
+    url: '/login/logout',
     method: 'post'
   })
 }
 
 export function getUserInfo (token) {
   return request({
-    url: '/api/user/queryById',
+    url: '/user/queryById',
     method: 'post',
     params: {
       id: token
@@ -44,7 +44,7 @@ export function getUserInfo (token) {
 
 export function cardAdd (item) {
   return request({
-    url: '/api/card/add',
+    url: '/card/add',
     method: 'post',
     params: item
   })

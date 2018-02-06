@@ -7,6 +7,7 @@ var loadinginstace
 
 // create an axios instance
 const service = axios.create({
+  baseURL: '/api',
   timeout: 5000, // request timeout
   headers: { 'Content-Type': 'application/json; charset=utf-8' }
 })
