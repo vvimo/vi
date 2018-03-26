@@ -27,3 +27,11 @@ export function articleList (data) {
     params: data
   })
 }
+
+export function upload (data) {
+  return request({
+    url: '/qiniu/upload',
+    method: 'post',
+    params: data
+  })
+}

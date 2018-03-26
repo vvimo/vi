@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import layout from '@/views/layout'
-import cLayout from '@/views/cLayout'
 
 Vue.use(Router)
 
@@ -19,15 +18,6 @@ export const routerMap = [
       { path: 'work', component: _import('pages/work/index'), name: 'work' },
       { path: 'about', component: _import('pages/about/index'), name: 'about' },
       { path: 'info/:id', component: _import('pages/info/index'), name: 'info' }
-    ]
-  }, {
-    path: '/console',
-    component: cLayout,
-    children: [
-      { path: '', component: _import('cPages/home/index'), name: 'cHome' },
-      { path: 'user', component: _import('cPages/user/index'), name: 'cUser' },
-      { path: 'article', component: _import('cPages/article/index'), name: 'cArticle' },
-      { path: 'articleSave', component: _import('cPages/article/save'), name: 'cArticleSave' }
     ]
   }, {
     path: '/login',
